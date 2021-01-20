@@ -1,0 +1,16 @@
+.content {
+  width: 90%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin: 1rem auto;
+}
+
+.main {
+  justify-content: center;
+}
+
+.mt {
+  margin-top: 6rem;
+  margin-bottom: 2rem;
+}

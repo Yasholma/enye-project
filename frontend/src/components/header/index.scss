@@ -1,0 +1,21 @@
+@import "../../scss/mixins";
+
+.header {
+  @include headfoot("header");
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  background: #397c78;
+  color: #fff;
+
+  &__content {
+    display: flex;
+    align-items: center;
+  }
+
+  &__logo {
+    font-family: "Pacifico", cursive;
+    font-weight: 300;
+  }
+}

@@ -1,0 +1,26 @@
+@import "../../scss/mixins";
+
+.footer {
+  @include headfoot("footer");
+  margin-top: 1rem;
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  &__text {
+    text-align: center;
+
+    a {
+      display: inline-block;
+    }
+  }
+
+  &__emoji {
+    animation: zoom 1s both infinite;
+    display: inline-block;
+  }
+}
