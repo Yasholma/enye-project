@@ -25,12 +25,15 @@ function Pagination({
         <span className="d-inline-block mx-2"> of </span> {totalData}
       </p>
       {currentPage !== 1 && (
-        <button className="btn" onClick={() => prevPage()}>
+        <button
+          className="btn btn-primary btn-sm mx-2"
+          onClick={() => prevPage()}
+        >
           {"<"}
         </button>
       )}
       {(currentPage - 1) * itemsPerPage + currentPageCount !== totalData && (
-        <button className="btn" onClick={() => nextPage()}>
+        <button className="btn btn-primary btn-sm" onClick={() => nextPage()}>
           {">"}
         </button>
       )}

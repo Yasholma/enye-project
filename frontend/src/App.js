@@ -66,82 +66,107 @@ function App() {
     <div className="App">
       <Header />
       <main className="mt main">
-        <div className="pagination">
-          <Pagination
-            itemsPerPage={itemsPerPage}
-            totalData={userProfiles.length || 0}
-            currentPageCount={shownData.length}
-            currentPage={currentPage}
-            handlePageClick={(selected) => selectedPage(selected)}
-          />
+        <div className="container">
+          <div className="pagination border d-inline-block p-2 rounded mb-2">
+            <Pagination
+              itemsPerPage={itemsPerPage}
+              totalData={userProfiles.length || 0}
+              currentPageCount={shownData.length}
+              currentPage={currentPage}
+              handlePageClick={(selected) => selectedPage(selected)}
+            />
+          </div>
         </div>
         {/* filter */}
         <form>
-          <div className="form-field">
-            <select
-              name="filter_gender"
-              id="filter_gender"
-              onChange={handleFilter}
-            >
-              <option value="">Filter by gender</option>
-              {genders.length > 0 &&
-                genders.map((g, i) => (
-                  <option value={g} key={i}>
-                    {g}
-                  </option>
-                ))}
-            </select>
-          </div>
+          <div className="container mb-4">
+            <div className="row">
+              <div className="col-md-4">
+                <div className="form-field form-group my-2">
+                  <select
+                    name="filter_gender"
+                    id="filter_gender"
+                    onChange={handleFilter}
+                    className="form-select"
+                  >
+                    <option value="">Filter by gender</option>
+                    {genders.length > 0 &&
+                      genders.map((g, i) => (
+                        <option value={g} key={i}>
+                          {g}
+                        </option>
+                      ))}
+                  </select>
+                </div>
+              </div>
 
-          <div className="form-field">
-            <select
-              name="filter_payment_method"
-              id="filter_payment_method"
-              onChange={handleFilter}
-            >
-              <option value="">Filter by Payment Method</option>
-              {paymentMethods.length > 0 &&
-                paymentMethods.map((g, i) => (
-                  <option value={g} key={i}>
-                    {g}
-                  </option>
-                ))}
-            </select>
-          </div>
+              <div className="col-md-4">
+                <div className="form-field form-group my-2">
+                  <select
+                    name="filter_payment_method"
+                    id="filter_payment_method"
+                    onChange={handleFilter}
+                    className="form-select"
+                  >
+                    <option value="">Filter by Payment Method</option>
+                    {paymentMethods.length > 0 &&
+                      paymentMethods.map((g, i) => (
+                        <option value={g} key={i}>
+                          {g}
+                        </option>
+                      ))}
+                  </select>
+                </div>
+              </div>
 
-          <div className="form-field">
-            <input
-              type="search"
-              className="search"
-              onChange={handleSearch}
-              placeholder="search..."
-            />
+              <div className="col-md-4">
+                <div className="form-field form-group my-2">
+                  <input
+                    type="search"
+                    className="search form-control"
+                    onChange={handleSearch}
+                    placeholder="search..."
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </form>
         <div className="content">
           {error && (
-            <p className="alert-error">
+            <p className="alert alert-danger">
               Sorry, we are unable to get the data at this time
             </p>
           )}
-          {!isLoading &&
-            shownData.map((p, index) => (
-              <Profile profile={p} key={index} showProfile={showProfile} />
-            ))}
+          <div className="container">
+            {isLoading ? (
+              <div className="spinner-border m-5" role="status">
+                <span className="visually-hidden">Loading...</span>
+              </div>
+            ) : (
+              <div className="row">
+                {shownData.map((p, index) => (
+                  <Profile profile={p} key={index} showProfile={showProfile} />
+                ))}
+              </div>
+            )}
+          </div>
         </div>
 
         {profile && (
           <ProfileModal profile={profile} closeProfile={closeProfile} />
         )}
 
-        <div className="pagination">
-          <Pagination
-            itemsPerPage={itemsPerPage}
-            totalData={userProfiles.length || 0}
-            currentPageCount={shownData.length}
-            currentPage={currentPage}
-            handlePageClick={(selected) => selectedPage(selected)}
-          />
+        <div className="container mt-3">
+          <div className="pagination border d-inline-block p-2 rounded mb-2">
+            <Pagination
+              itemsPerPage={itemsPerPage}
+              totalData={userProfiles.length || 0}
+              currentPageCount={shownData.length}
+              currentPage={currentPage}
+              handlePageClick={(selected) => selectedPage(selected)}
+            />
+          </div>
         </div>
       </main>
       <Footer />
